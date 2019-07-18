@@ -1,0 +1,99 @@
+
+num=("""                           
+                          ____
+                         |    |
+                         |    O           You have 6 chances!
+                         |    M
+                         |   !.!
+                        ---""")
+
+num1='''
+
+
+          ____  '''
+
+num2='''
+ |
+ |
+ |
+_|___'''
+num3='''
+ _____
+ |
+ |
+ |
+_|___'''
+num4='''
+ _____
+ |    |
+ |
+ |
+_|___'''
+num5='''
+ _____
+ |    |
+ |    Ó
+ |
+_|___'''
+num6='''
+ _____
+ |    |
+ |    Ó
+ |    ¶
+_|___'''
+
+print(num)
+dosyakelime=[]
+print("Kelime:--------")
+kelime="kamuran"
+
+k = 0
+for i in range(len(kelime)):
+    dosyakelime.append("-")
+while True:
+
+    harf = input("harf=")
+    yharf = harf.lower()
+    if harf.isalpha() != True:
+        print("Please insert letter!!")
+        continue
+    if yharf in kelime:
+        a = 0
+        for i in kelime:
+            if yharf == i:
+                dosyakelime.pop(a)
+                dosyakelime.insert(a, yharf)
+                a+=1
+            else:
+                a+=1
+        print(dosyakelime)
+    if dosyakelime == list(kelime):
+                print("Congrats! You win...")
+                print(kelime)
+    if yharf not in kelime:
+        k += 1
+        if k == 1:
+            print(num1)
+            print(dosyakelime)
+            print(6 - k, "tries remaining!")
+        elif k == 2:
+            print(num2)
+            print(dosyakelime)
+            print(6 - k, "tries remaining!")
+        elif k == 3:
+            print(num3)
+            print(dosyakelime)
+            print(6 - k, "tries remaining!")
+        elif k == 4:
+            print(num4)
+            print(dosyakelime)
+            print(6 - k, "tries remaining!")
+        elif k == 5:
+            print(num5)
+            print(dosyakelime)
+            print(6 - k, "tries remaining!")
+        elif k == 6:
+            print(num6)
+            print(dosyakelime)
+            print("NO tries remained!, You are dead!!!!!")
+            quit()
