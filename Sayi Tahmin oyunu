@@ -1,0 +1,60 @@
+'''Kendiniz 4 basamakli, rakamlari birbirinden farkli ve icerisinde 0 rakaminin yer almadigi bir sayi
+belirleyin. Kullanicidan bu sayiyi tahmin etmesini isteyin. Yapilan tahmin sonucu kullanicinin,
+tahminde bulundugu sayidaki rakamlarin degeri ve yeri dogruysa +1, degeri dogru fakat
+yeri dogru degilse -1 ciktisi verecegiz. Bu sekilde tahminde bulunmaya devam etmesi saglanacak ve
+sayiyi tam bir sekilde dogru bildiginde gerekli bilgilendirme yapilip oyun bitirilecek.
+
+ sayi = 1234
+yapilan tahmin = 9831
+(Burada "9" ve "8" rakamlari yanlis oldugu icin ciktiya bir etkisi yok. "3" rakaminin
+yeri dogru oldugu icin +1, "1" rakami sayi icerisinde yer alan fakat yeri yanlis oldugu icin
+-1 ciktisi verecegiz.)
+ ornek output = +1 -1
+yapilan tahmin = 2134
+("2" ve "1" rakamlari sayi icerisinde yer aldigi fakat yerlerinin yanlis olmasi nedeniyle
+ikisi icin -1, "3" ve "4" rakamlarinin yerleri de dogru oldugu icin +1 degerleri donecegiz.)
+ ornek output = +2 -2
+yapilan tahmin = 9876
+ornek output = +0 -0
+yapilan tahmin = 2146
+ornek output = +0 -3'''
+import random
+number=[]
+basamak=1
+while basamak<=4:
+    a=random.randint(0,9)
+    if a in number:
+        continue
+    else:
+        number.append(a)
+        if number[0]==0:
+            number.pop(0)
+            continue
+        basamak+=1
+        continue
+
+print(number)
+
+while True:
+    tahmin = []
+    giris = input("sayi:")
+    for i in giris:
+        tahmin.append(int(i))
+        if len(tahmin)>4:
+            print("Please enter only 4 digits!")
+            break
+    a=0
+    b=0
+    if list(tahmin) == list(number):
+        print("Right guess!")
+        break
+    for i in tahmin:
+        if i in number:
+            if tahmin.index(i) == number.index(i):
+                a+=1
+            elif tahmin.index(i) != number.index(i):
+                b+=1
+    print("+",a)
+    print("-", b)
+
+
